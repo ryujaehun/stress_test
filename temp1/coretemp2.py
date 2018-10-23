@@ -76,8 +76,11 @@ def plot_temperatures(cpu_temps, gpu_temps0,gpu_temps1,gpu_temps2,gpu_temps3):
     gpu_avg1 = sum([t for t in gpu_temps1.values()])/float(len([t for t in gpu_temps1.values()]))
     gpu_avg2 = sum([t for t in gpu_temps2.values()])/float(len([t for t in gpu_temps2.values()]))
     gpu_avg3 = sum([t for t in gpu_temps3.values()])/float(len([t for t in gpu_temps3.values()]))
-    #cpu_avg_plot = plt.axhline(y=cpu_avg, xmin=0, xmax=len(cpu_temps), color='r', linestyle='--')
-    #gpu_avg_plot = plt.axhline(y=gpu_avg, xmin=0, xmax=len(gpu_temps), color='b', linestyle='--')
+    cpu_avg_plot = plt.axhline(y=cpu_avg, xmin=0, xmax=len(cpu_temps), color='r', linestyle='--')
+    gpu_avg_plot0 = plt.axhline(y=gpu_avg0, xmin=0, xmax=len(gpu_temps0), color='c', linestyle='--')
+    gpu_avg_plot1 = plt.axhline(y=gpu_avg1, xmin=0, xmax=len(gpu_temps1), color='m', linestyle='--')
+    gpu_avg_plot2 = plt.axhline(y=gpu_avg2, xmin=0, xmax=len(gpu_temps2), color='y', linestyle='--')
+    gpu_avg_plot3 = plt.axhline(y=gpu_avg3, xmin=0, xmax=len(gpu_temps3), color='k', linestyle='--')
     cpu_plot = plt.plot(x, cpu_temps.values(), 'ro-')
     gpu_plot0 = plt.plot(x, gpu_temps0.values(), 'co-')
     gpu_plot1 = plt.plot(x, gpu_temps1.values(), 'mo-')
@@ -89,7 +92,7 @@ def plot_temperatures(cpu_temps, gpu_temps0,gpu_temps1,gpu_temps2,gpu_temps3):
     plt.xlim(xmin=-1, xmax=len(x))
     fig.autofmt_xdate()
     plt.ylabel("Temperature (in Celcius)")
-    plt.legend([gpu_plot0,gpu_plot1,gpu_plot2,gpu_plot3, cpu_plot],
+    plt.legend([gpu_plot0,gpu_avg_plot0,gpu_plot1,gpu_avg_plot1,gpu_plot2,gpu_avg_plot2,gpu_plot3, gpu_avg_plot3,cpu_plot,cpu_avg_plot],
                ["GPU temperature", "Average GPU temperature : %.1fC" %(gpu_avg0),"GPU temperature", "Average GPU temperature : %.1fC" %(gpu_avg1),
                 "GPU temperature", "Average GPU temperature : %.1fC" %(gpu_avg2),"GPU temperature", "Average GPU temperature : %.1fC" %(gpu_avg3),
                 "CPU", "Average CPU temperature : %.1fC" %(cpu_avg)],
