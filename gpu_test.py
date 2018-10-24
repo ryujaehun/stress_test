@@ -1,4 +1,4 @@
-"""Compare speed of different models with batch size 16"""
+#! /usr/bin/python3
 import torch
 from torchvision.models import vgg
 from torch.autograd import Variable
@@ -17,8 +17,8 @@ device_name=torch.cuda.get_device_name(0)
 # Training settings
 parser = argparse.ArgumentParser(description='PyTorch Benchmarking')
 
-parser.add_argument('--NUM_TEST','-n', type=int,default=200000,required=False, help="Num of Test")
-parser.add_argument('--BATCH_SIZE','-b', type=int, default=62, required=False, help='Num of batch size')
+parser.add_argument('--NUM_TEST','-n', type=int,default=2000000,required=False, help="Num of Test")
+parser.add_argument('--BATCH_SIZE','-b', type=int, default=60, required=False, help='Num of batch size')
 parser.add_argument('--NUM_CLASSES','-c', type=int, default=1000, required=False, help='Num of class')
 
 args = parser.parse_args()
